@@ -376,13 +376,13 @@
         }
 
         async function fetchGatepassData(id) {
-            const response = await fetch(`${API_BASE_URL}/Gatepass/${id}`);
+            const response = await fetch(`${API_BASE_URL}/Gatepass/GetDetails/${id}`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             return await response.json();
         }
 
         async function getChallan(truckNo) {
-            const response = await fetch(`${API_BASE_URL}/Deliverychallan/${truckNo}`);
+            const response = await fetch(`${API_BASE_URL}/Gatepass/GetTruckDetails/${truckNo}`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const challans = await response.json();
             
@@ -493,7 +493,7 @@
 
     try {
         openViewer('Loading...');
-        const response = await fetch(`${API_BASE_URL}/GatePass/Details`, { 
+        const response = await fetch(`${API_BASE_URL}/GatePass/GetDetails`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
